@@ -1,0 +1,498 @@
+// Color palette
+$black: #0a0a0a;
+$dark: #1a1a1a;
+$darker: #141414;
+$white: #ffffff;
+$red: #dc2626;
+$red-dark: #991b1b;
+$gold: #d4af37;
+$gold-light: #f5d76e;
+$gray: #6b7280;
+$gray-light: #9ca3af;
+
+.container {
+  min-height: 100vh;
+  background-color: $black;
+  padding: 2rem;
+  padding-bottom: 8rem; // Space for selection bar
+  color: $white;
+}
+
+// Event Header
+.eventHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #333;
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: $white;
+  }
+
+  .eventDetails {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: $gray-light;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+
+    .divider {
+      color: $gold;
+    }
+  }
+}
+
+// City Selection
+.citySelection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  
+  .cityDropdown {
+    background-color: $dark;
+    color: $white;
+    border: 1px solid #333;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    min-width: 200px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+
+    &:hover, &:focus {
+      border-color: $gold;
+    }
+
+    option {
+      background-color: $dark;
+      color: $white;
+    }
+  }
+}
+
+// Stage
+.stage {
+  width: 60%;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(180deg, $dark 0%, $darker 100%);
+  border: 2px solid $gold;
+  border-radius: 4px 4px 50% 50%;
+  text-align: center;
+
+  span {
+    color: $gold;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+  }
+}
+
+// Seat Layout
+.seatLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section {
+  background-color: $dark;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #333;
+
+  .sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #333;
+
+    .sectionInfo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $white;
+      }
+
+      .price {
+        background-color: $gold;
+        color: $black;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+    }
+
+    .quickBook {
+      background-color: transparent;
+      color: $red;
+      border: 1px solid $red;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover:not(:disabled) {
+        background-color: $red;
+        color: $white;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  .rowLabel {
+    width: 2rem;
+    font-size: 0.75rem;
+    color: $gray;
+    text-align: right;
+  }
+
+  .seats {
+    display: flex;
+    gap: 0.4rem;
+    justify-content: center;
+    flex: 1;
+  }
+}
+
+// Seat Styles
+.seat {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+
+  .seatNumber {
+    color: $white;
+  }
+
+  .lockIcon {
+    font-size: 0.65rem;
+  }
+
+  .bookedIcon {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.available {
+  background-color: #1e3a2f;
+  border: 1px solid #2d5a45;
+
+  &:hover {
+    background-color: #2d5a45;
+    transform: scale(1.1);
+  }
+}
+
+.hold {
+  background-color: #3f3f46;
+  border: 1px solid #52525b;
+  cursor: not-allowed;
+}
+
+.booked {
+  background-color: #2a2a2a;
+  border: 1px solid #3f3f3f;
+  cursor: not-allowed;
+}
+
+.selected {
+  background-color: $gold !important;
+  border: 2px solid $gold-light !important;
+  transform: scale(1.1);
+
+  .seatNumber {
+    color: $black !important;
+    font-weight: 700;
+  }
+}
+
+.loading {
+  background-color: $gold !important;
+  border-color: $gold-light !important;
+}
+
+.spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid transparent;
+  border-top-color: $black;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Legend
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+
+  .legendItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    span {
+      font-size: 0.85rem;
+      color: $gray-light;
+    }
+  }
+
+  .legendBox {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+
+    &.available {
+      background-color: #1e3a2f;
+      border: 1px solid #2d5a45;
+    }
+
+    &.hold {
+      background-color: #3f3f46;
+      border: 1px solid #52525b;
+    }
+
+    &.booked {
+      background-color: #2a2a2a;
+      border: 1px solid #3f3f3f;
+    }
+
+    &.selected {
+      background-color: $gold;
+      border: 2px solid $gold-light;
+    }
+  }
+}
+
+// Selection Bar
+.selectionBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, $dark 0%, $black 100%);
+  border-top: 2px solid $gold;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+
+  .selectionInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .selectionCount {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: $gold;
+    }
+
+    .selectedSeats {
+      font-size: 0.85rem;
+      color: $gray-light;
+    }
+
+    .selectionTotal {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $white;
+    }
+  }
+
+  .selectionActions {
+    display: flex;
+    gap: 1rem;
+
+    .clearButton {
+      background-color: transparent;
+      color: $gray-light;
+      border: 1px solid $gray;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover:not(:disabled) {
+        background-color: #333;
+        color: $white;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .confirmButton {
+      background-color: $red;
+      color: $white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover:not(:disabled) {
+        background-color: $red-dark;
+        transform: scale(1.02);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// Loading Overlay
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  .loadingContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    p {
+      color: $white;
+      font-size: 0.9rem;
+    }
+  }
+
+  .loadingSpinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #333;
+    border-top-color: $gold;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    padding-bottom: 10rem;
+  }
+
+  .eventHeader h1 {
+    font-size: 1.25rem;
+  }
+
+  .stage {
+    width: 80%;
+  }
+
+  .seat {
+    width: 28px;
+    height: 28px;
+    font-size: 0.6rem;
+  }
+
+  .section {
+    padding: 1rem;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start !important;
+  }
+
+  .legend {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .selectionBar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+
+    .selectionInfo {
+      text-align: center;
+      width: 100%;
+    }
+
+    .selectionActions {
+      width: 100%;
+      justify-content: center;
+
+      .confirmButton {
+        flex: 1;
+      }
+    }
+  }
+}
