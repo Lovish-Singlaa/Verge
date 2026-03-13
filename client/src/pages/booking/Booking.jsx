@@ -22,7 +22,7 @@ const Booking = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingSeatId, setLoadingSeatId] = useState(null);
   const [initialLoading, setInitialLoading] = useState(true);
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState('Ahemdabad');
 
   // Fetch seats on mount
   useEffect(() => {
@@ -132,10 +132,12 @@ const Booking = () => {
 
   // Confirm and book selected seats
   const handleConfirmBooking = () => {
+    /*
     if (!city) {
       errorToast('Please select a city first');
       return;
     }
+    */
     if (selectedSeats.length === 0 || isLoading || bookingLoading) return;
 
     const section = selectedSeats[0].section;
@@ -200,10 +202,12 @@ const Booking = () => {
 
   // Handle section-based booking (auto-assign)
   const handleSectionBook = async (section) => {
+    /*
     if (!city) {
       errorToast('Please select a city first');
       return;
     }
+    */
     if (isLoading || bookingLoading) return;
 
     // Find all available seats in this section
@@ -292,7 +296,7 @@ const Booking = () => {
 
   return (
     <div className={styles.container}>
-      {/* City Selection */}
+      {/* City Selection
       <div className={styles.citySelection}>
         <select
           value={city}
@@ -305,7 +309,7 @@ const Booking = () => {
           <option value="Mumbai">Mumbai</option>
           <option value="Banglore">Banglore</option>
         </select>
-      </div>
+      </div> */}
 
       {/* Event Header */}
       <div className={styles.eventHeader}>
